@@ -1,18 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GoParty</title>
-    <link rel="stylesheet" href="/js/css/style.css">
-    <link rel="icon" href="/js/assets/13280025.png" type="image/png">
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap">
+    <link rel="stylesheet" href="/projeto/css/style.css">
+    <link rel="icon" href="/projeto/assets/13280025.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
 </head>
 <body>
- <header>
-    <div class="">
-    </div>
- </header>
+ 
+    <!--Hero Section-->
+    <section class ='hero'>
+        <div class="hero-tag">🍻Goiânia | Goiás</div>
+        <h1>GO<span>PARTY</span></h1>
+            <p class = 'hero-sub'>Encontre o estabelicimento gastronômico perfeito para seu <span>estilo</span></p>
+            <div class ='hero-stats'> 
+                <div class="stat">
+                    <div class="stat-num">40</div>
+                    <div class="stat-label">Locais</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-num">1</div>
+                    <div class="stat-label">Cidades</div>
+                </div>
+            </div>
+    </section>
+
+    <!-- Filter Section -->
+     <div class="filter-section">
+        <div class="filter-inner">
+            <div class="filter-row">
+                <div class="search-box">
+                    🔍<input type="text" id="searchInput" placeholder="Busque por nome">
+                </div>
+                <button class="filter-btn active" onclick="setFilter('todos', this)">Todos</button>
+                <button class="filter-btn" onclick="setFilter('restaurante', this)">🍽️Restaurante</button>
+                <button class="filter-btn" onclick="setFilter('bar', this)">🍹Bar</button>
+                <button class="filter-btn" onclick="setFilter('pub', this)">🍻Pubs</button>
+                <select class="sort-select" id ='sortSelect' onchange="renderCards()">
+                    <option value='score'>Maior Nota</option>
+                    <option value='reviews'>Maior Avaliação </option>
+                    <option value='name'>A-Z</option>
+                </select>
+            </div>
+        </div>
+     </div>
     
 </body>
 </html>

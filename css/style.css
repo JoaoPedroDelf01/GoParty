@@ -6,11 +6,16 @@
 |    h3    | 1.5rem    |   24px
 */
 :root {
-    --back: #0a0a0f;
+    --back: #16161f;
     --superficie: #111118;
     --placas: #16161f;
     --texto: #f0f0f5;
+    --linhas: #493644;
     --redtag: #ff4d6d;
+    --subtitulos: #7a7878;
+    --stats: #2ecc71;
+    --superficie: #03588C;
+    --bordas: #14446e;
 }
 * {
     margin: 0;
@@ -25,6 +30,93 @@ body {
     font-family: 'DM Sans', sans-serif;
     min-height: 100vh;
 }
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px 80px;
+    overflow: hidden;
+}
+
+.hero-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--redtag);
+    border: 1px solid rgba(255,77,109,0.3);
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 28px;
+    display: inline-block;
+
+    animation: fadeDown 0.5s ease both;
+}
+
+.hero h1 {  
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(72px, 12vw, 160px);
+    line-height: 0.9;
+    letter-spacing: 2px;
+    animation: fadeDown 0.7s 0.1s ease both;
+}
+
+.hero h1 span {
+    background: linear-gradient(135deg, #EBF227, #035AA6);
+    -webkit-backdrop-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero p {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--subtitulos);
+  margin-top: 20px;
+  max-width: 480px;
+  line-height: 1.6;
+  animation: fadeDown 0.5s 0.2s ease both;
+}
+
+.hero p span{
+    background-color: #EBF227;
+    -webkit-backdrop-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-stats {
+  display: flex;
+  font-family: 'DM Sans', sans-serif;
+  gap: 40px;
+  margin-top: 50px;
+
+  animation: fadeDown 0.9s 0.3s ease both;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat-num{
+  font-size: 48px;
+  color: var(--stats);
+  line-height: 1;
+}
+
+.stat-label{
+  font-size: 11px;
+  font-weight: 1000;
+  color:var(--subtitulos);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
 
 @keyframes fadeDown {
   from {
@@ -37,19 +129,93 @@ body {
   }
 }
 
-.hero-tag {
-    font-family: 'Space Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--redtag);
-    padding: 6px 16px;
-    border-radius: 20px;
-    margin-bottom: 28px;
-    display: inline-block;
-    animation: fadeDown 0.5s ease both;
+.filter-section {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--back);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-bottom: 1px solid var(--linhas);
+    margin-bottom: 20px;
 }
 
-.hero h1 {  
-
+.filter-inner{
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 24px;
 }
+
+.filter-row{
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.search-box{
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--back);
+    border: 1px solid var(--bordas);
+    border-radius: 12px;
+    padding: 8px 12px;
+    transition: border-color 0.2s;
+}
+
+.search-box:focus-within{
+    border-color: var(--stats);
+}
+
+.search-box input{
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--texto);
+    background: transparent;
+    font-size: 14px;
+    font-family: 'DM Sans', sans-serif;
+    width: 100%;
+}
+
+.filter-btn{
+    background: var(--superficie);
+    border: 1px solid var(--bordas);
+    color: var(--texto);
+    padding: 8px 16px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.filter-btn:hover{
+    background: var(--stats);
+    border-color: var(--stats);
+    color: #fff;
+}
+
+.filter-btn.active{
+    background-color: var(--stats);
+    border-color: var(--stats);
+    color: #1d1919;
+}
+
+.sort-select{
+    background: var(--superficie);
+    border: 1px solid var(--bordas);
+    color: var(--texto);
+    padding: 8px 16px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    animation: fadeUp;
+}
+
