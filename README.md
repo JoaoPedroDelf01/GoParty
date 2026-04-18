@@ -22,7 +22,6 @@ O **GoParty** é um projeto desenvolvido com foco no lazer e na diversão, centr
 ## 🗂️ Estrutura do Projeto
 
 - 'GoParty.html': Página inicial do site
--
 - '**Pasta:** css': Pasta com os códigos CSS que serão utiizados no site
 - '**Pasta:** features': imagens utilizadas no site
 
