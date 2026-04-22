@@ -5,6 +5,9 @@
 |    h2    |  2rem     |   32px
 |    h3    | 1.5rem    |   24px
 */
+
+/* Todas as cores inseridas */
+
 :root {
     --back: #16161f;
     --superficie: #111118;
@@ -23,6 +26,8 @@
     box-sizing: border-box;
 
 }
+
+/* Todo a parte inicial do site*/
 
 body {
     background-color: var(--back);
@@ -66,10 +71,16 @@ body {
 }
 
 .hero h1 span {
+    display: inline-block;
     background: linear-gradient(135deg, #EBF227, #035AA6);
     -webkit-backdrop-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    transition: transform 0.3s ease-in-out
+}
+
+.hero h1 span:hover{
+    transform: translateY(-5px);
 }
 
 .hero p {
@@ -84,10 +95,16 @@ body {
 }
 
 .hero p span{
+    display: inline-block;
     background-color: #EBF227;
     -webkit-backdrop-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    transition: transform 0.3s ease-in-out;
+}
+
+.hero p span:hover{
+    transform: translateY(-2px)
 }
 
 .hero-stats {
@@ -107,8 +124,12 @@ body {
   font-size: 48px;
   color: var(--stats);
   line-height: 1;
+  transition: transform 0.4s ease-in-out;
 }
 
+.stat-num:hover{
+    transform: translateY(-5px);
+}
 .stat-label{
   font-size: 11px;
   font-weight: 1000;
@@ -129,6 +150,7 @@ body {
   }
 }
 
+/* Parte dos Filtros */
 .filter-section {
     position: sticky;
     top: 0;
@@ -219,3 +241,25 @@ body {
     animation: fadeUp;
 }
 
+/* Footer ( Parte inferior do site ) */
+
+footer{
+    border-top: 1px solid var(--linhas);
+    padding: 40px 24px;
+    text-align: center;
+    color: var(--subtitulos);
+    font-size: 13px;
+}
+footer a{
+    
+    text-decoration: none;
+}
+
+footer strong{
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    color: var(--stats);
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    transition: all 0.3 ease-in-out;
+}
