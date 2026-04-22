@@ -1,4 +1,4 @@
-#GOPARTY
+# GOPARTY
 
 O **GoParty** é um projeto desenvolvido com foco no lazer e na diversão, centralizando informações de Bares e Restaures para diversos tipos de público. O projeto demonstra a integração de um front-end intuitivo com um back-and funcional e simples, todos feitos em Python.
 
