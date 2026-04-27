@@ -35,6 +35,7 @@ body {
     font-family: 'DM Sans', sans-serif;
     min-height: 100vh;
 }
+
 .hero {
     position: relative;
     min-height: 100vh;
@@ -240,6 +241,18 @@ body {
     transition: all 0.2s;
     animation: fadeUp;
 }
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
 /* Footer ( Parte inferior do site ) */
 
