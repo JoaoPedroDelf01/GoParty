@@ -5,7 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
-    allow_origins = ["http://127.0.0.1:5500", "http://localhost:5500"],
+    allow_origins = ["*"],
     allow_credentials = True,
     allow_methods = ["*"],
     allow_headers = ["*"],
@@ -14,50 +14,59 @@ app.add_middleware(
 
 
 # Lista vazia — será preenchida pelo seu programa quando vincular ao frontend
-BARES: list[str] = []
+ESTABELECIMENTOS: list[str] = []
 
 
 @app.post("/adicionar")
-def adicionar(data: dict):
-    bar = data["bar"]
-    """Adiciona um bar à seleção do usuário."""
-    if bar in BARES:
+def adicionar(data: dict): 
+    place = data["place"]
+    """Adiciona um estabelecimento à seleção do usuário."""
+    
+    if place in ESTABELECIMENTOS:
         return{ "status": False,
-            "erro": f"'{bar}' já está na lista."}
-    BARES.append(bar)
+            "erro": f"'{place}' já está na lista."}
+        
+    ESTABELECIMENTOS.append(place)
     return { "status": True,
-        "mensagem": f"'{bar}' adicionado com sucesso."}
+        "mensagem": f"'{place}' adicionado com sucesso."}
+    
+@app.delete("/remover")
+def remover(data: dict):
+    """Remove um estabelecimento da seleção do usuário."""
+    
+    place = data["place"]
+    
+    if place not in ESTABELECIMENTOS:
+        return {"status": False,
+                "erro": f"{place} não encontrado"}
+    
+    ESTABELECIMENTOS.remove(place)
+    return {"status": True,
+        "mensagem": f"'{place}' removido com sucesso."}
     
 @app.get("/lista")
 def listar():
-    if not BARES:
+    """Comando de retorno para ver se realmente o backend está funcionando.\nSó exibi no console"""
+    
+    if not ESTABELECIMENTOS:
        return {"status": False,
                "mensagem": "ERROR!"
         }
     
     return {"status": True,
-            "bares": BARES
-    }
-
-@app.delete("/remover")
-def remover(bar: dict):
-    """Remove um bar da seleção do usuário."""
-    if bar not in BARES:
-        return {"status": False,
-                "erro": f"{bar} não encontrado"}
-    
-    BARES.remove(bar)
-    return {"status": True,
-        "mensagem": f"'{bar}' removido com sucesso."}
+            "ESTABELECIMENTOS": ESTABELECIMENTOS
+    } 
 
 
-@app.post("/sortear")
+
+@app.get("/sortear")
 def sortear():
-    """Sorteia 1 vencedor entre os bares adicionados."""
-    if not BARES:
+    """Sorteia 1 vencedor entre os estabelecimentos adicionados."""
+    
+    if not ESTABELECIMENTOS:
         return {"status": False,
-            "erro": "Adicione ao menos um bar antes de sortear."}
+            "erro": "Adicione ao menos um estabelecimento antes de sortear."}
 
-    vencedor = random.choice(BARES)
+    vencedor = random.choice(ESTABELECIMENTOS)
     return { "status": True,
         "vencedor": vencedor}
